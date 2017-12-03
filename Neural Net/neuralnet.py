@@ -2,7 +2,6 @@
 Main Neural Network Pipeline.
 """
 
-import numpy as np
 
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten
@@ -10,6 +9,7 @@ from keras.layers import Conv2D, Conv1D, GlobalAveragePooling2D
 from datagenerator import DataGenerator
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
+import numpy as np
 import itertools
 import os
 
@@ -44,19 +44,12 @@ validation_generator = DataGenerator(**params).generate(Test_IDs)
 # Design model
 model = Sequential()
 model.add(Conv2D(32, kernel_size=(3, 3), activation='relu', input_shape=(None, None, 1)))
-#model.add(Conv1D(256, kernel_size=(3), activation='relu', input_shape=(None, 1)))
 model.add(Conv2D(32, kernel_size=(3, 3), activation='relu'))
 model.add(Conv2D(32, kernel_size=(3, 3), activation='relu'))
 model.add(Conv2D(32, kernel_size=(3, 3), activation='relu'))
-#model.add(Conv2D(32, kernel_size=(3, 3), activation='relu'))
-#model.add(Conv2D(32, kernel_size=(3, 3), activation='relu'))
-#model.add(Conv2D(32, kernel_size=(3, 3), activation='relu'))
 model.add(GlobalAveragePooling2D(data_format='channels_last'))
-#model.add(Dropout(0.25))
 
-#model.add(Flatten())
 model.add(Dense(168, activation='relu'))
-#model.add(Dropout(0.25))
 model.add(Dense(168, activation='softmax'))
 
 model.compile(loss='categorical_crossentropy',
@@ -74,7 +67,3 @@ model.fit_generator(generator = training_generator,
 
 #model.save_weights("/Users/ghunk/Desktop/GRADUATE/CSC_464/Final_Project/weights.h5py")
 model.save_weights("/home/ghunkins/weights.h5py")
-
-
-#steps_per_epoch = len(Train_IDs)//params['batch_size'],
-#validation_steps = len(Test_IDs)//params['batch_size'],
