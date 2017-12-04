@@ -1,6 +1,8 @@
 #!/bin/bash
 #SBATCH -p gpu
-#SBATCH --mem-per-cpu=10gb
+#SBATCH -N 1                    
+#SBATCH --mem=125gb            
+#SBATCH --ntasks-per-node=1
 #SBATCH -t 0-04:00:00
 #SBATCH --job-name=binaural
 #SBATCH --output=binaural.txt
