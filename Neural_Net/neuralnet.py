@@ -15,8 +15,10 @@ import os
 
 # Parameters
 
-#data_root = "/Users/ghunk/Desktop/GRADUATE/CSC_464/Final_Project/Dataset/stft/"
-data_root = "/scratch/ghunkins/stft/"
+if os.path.abspath('~') == '/Users/ghunk/~':
+	data_root = "/Users/ghunk/Desktop/GRADUATE/CSC_464/Final_Project/Dataset/stft/"
+else:
+	data_root = "/scratch/ghunkins/stft/"
 
 elevations = [-45, -30, -15, 0, 15, 30, 45]
 azimuths = [15*x for x in range(24)]

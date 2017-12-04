@@ -2,9 +2,12 @@
 Modified from: https://stanford.edu/~shervine/blog/keras-how-to-generate-data-on-the-fly.html
 """
 import numpy as np
+import os
 
-#data_root = "/Users/ghunk/Desktop/GRADUATE/CSC_464/Final_Project/Dataset/stft/"
-data_root = "/scratch/ghunkins/stft/"
+if os.path.abspath('~') == '/Users/ghunk/~':
+  data_root = "/Users/ghunk/Desktop/GRADUATE/CSC_464/Final_Project/Dataset/stft/"
+else:
+  data_root = "/scratch/ghunkins/stft/"
 
 class DataGenerator(object):
   '''Generates data for Keras'''
