@@ -17,8 +17,7 @@ from keras.backend.tensorflow_backend import set_session
 
 # set config 
 config = tf.ConfigProto()
-config.gpu_options.allocator_type ='BFC'
-config.gpu_options.per_process_gpu_memory_fraction = 0.8
+config.gpu_options.per_process_gpu_memory_fraction = 0.3
 set_session(tf.Session(config=config))
 
 # Parameters
