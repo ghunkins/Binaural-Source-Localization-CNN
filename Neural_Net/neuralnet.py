@@ -27,7 +27,7 @@ classes = [str(x) + '_' + str(y) for x, y in el_az]
 encoder = LabelEncoder()
 encoder.fit(classes)
 
-params = {'batch_size': 32,
+params = {'batch_size': 10,
 		  'Y_encoder': encoder,
           'shuffle': True}
 
