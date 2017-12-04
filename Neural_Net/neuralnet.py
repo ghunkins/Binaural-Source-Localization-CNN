@@ -1,7 +1,13 @@
 """
 Main Neural Network Pipeline.
 """
+#-------------------------- set gpu using tf ---------------------------#
+import tensorflow as tf
+config = tf.ConfigProto()
+config.gpu_options.allow_growth = True
+session = tf.Session(config=config)
 
+#-------------------  start importing keras module ---------------------#
 
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten
@@ -12,13 +18,6 @@ from sklearn.preprocessing import LabelEncoder
 import numpy as np
 import itertools
 import os
-import tensorflow as tf
-from keras.backend.tensorflow_backend import set_session
-
-# set config 
-config = tf.ConfigProto()
-config.gpu_options.per_process_gpu_memory_fraction = 0.3
-set_session(tf.Session(config=config))
 
 # Parameters
 
