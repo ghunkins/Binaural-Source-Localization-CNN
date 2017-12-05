@@ -1,16 +1,15 @@
 #!/bin/bash
 #SBATCH -p gpu
-#SBATCH -N 10                    
+#SBATCH -N 1                    
 #SBATCH --mem=25gb            
-#SBATCH --ntasks-per-node=2
+#SBATCH --ntasks-per-node=1
 #SBATCH -t 0-04:00:00
 #SBATCH --job-name=binaural
 #SBATCH --output=binaural.txt
 #SBATCH -e error.txt
 #SBATCH --mail-type=begin
 #SBATCH --mail-user=ghunkins@u.rochester.edu
-#SBATCH --time=8:00:00
-#SBATCH --gres=gpu:2
+#SBATCH --gres=gpu:1
 
 source activate keras
 python neuralnet.py
