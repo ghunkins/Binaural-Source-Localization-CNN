@@ -5,9 +5,9 @@ import numpy as np
 import os
 
 if os.path.abspath('~') == '/Users/ghunk/~':
-  data_root = "/Users/ghunk/Desktop/GRADUATE/CSC_464/Final_Project/Dataset/stft/"
+  data_root = "/Users/ghunk/Desktop/GRADUATE/CSC_464/Final_Project/Dataset/stft_binaural_0.5s/"
 else:
-  data_root = "/scratch/ghunkins/stft/"
+  data_root = "/scratch/ghunkins/stft_binaural_0.5s/"
 
 class DataGenerator(object):
   '''Generates data for Keras'''

@@ -22,9 +22,9 @@ import os
 # Parameters
 
 if os.path.abspath('~') == '/Users/ghunk/~':
-	data_root = "/Users/ghunk/Desktop/GRADUATE/CSC_464/Final_Project/Dataset/stft/"
+	data_root = "/Users/ghunk/Desktop/GRADUATE/CSC_464/Final_Project/Dataset/stft_binaural_0.5s/"
 else:
-	data_root = "/scratch/ghunkins/stft/"
+	data_root = "/scratch/ghunkins/stft_binaural_0.5s/"
 
 elevations = [-45, -30, -15, 0, 15, 30, 45]
 azimuths = [15*x for x in range(24)]
@@ -73,5 +73,4 @@ model.fit_generator(generator = training_generator,
                     validation_steps = len(Test_IDs)//params['batch_size'],
                     verbose=2)
 
-#model.save_weights("/Users/ghunk/Desktop/GRADUATE/CSC_464/Final_Project/weights.h5py")
-model.save_weights("/home/ghunkins/weights.h5py")
+model.save_weights("./weights.h5py")
