@@ -1,0 +1,39 @@
+368s - loss: 3.6673 - acc: 0.0931 - val_loss: 2.6409 - val_acc: 0.1965
+Epoch 2/20
+91s - loss: 2.1381 - acc: 0.3048 - val_loss: 1.8043 - val_acc: 0.3760
+Epoch 3/20
+^[[B^[[B^[[B^[[B^[[B90s - loss: 1.5077 - acc: 0.4665 - val_loss: 1.4124 - val_acc: 0.4888
+Epoch 4/20
+75s - loss: 1.1224 - acc: 0.5885 - val_loss: 1.2360 - val_acc: 0.5780
+Epoch 5/20
+94s - loss: 0.8743 - acc: 0.6928 - val_loss: 0.8824 - val_acc: 0.6783
+Epoch 6/20
+88s - loss: 0.7047 - acc: 0.7582 - val_loss: 0.9381 - val_acc: 0.6827
+Epoch 7/20
+89s - loss: 0.5695 - acc: 0.8031 - val_loss: 0.9671 - val_acc: 0.6995
+Epoch 8/20
+90s - loss: 0.4582 - acc: 0.8459 - val_loss: 0.9035 - val_acc: 0.7167
+Epoch 9/20
+90s - loss: 0.4361 - acc: 0.8568 - val_loss: 1.0275 - val_acc: 0.7020
+Epoch 10/20
+^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A87s - loss: 0.3716 - acc: 0.8768 - val_loss: 0.7423 - val_acc: 0.7702
+Epoch 11/20
+89s - loss: 0.3376 - acc: 0.8936 - val_loss: 0.7018 - val_acc: 0.7857
+Epoch 12/20
+88s - loss: 0.3074 - acc: 0.9021 - val_loss: 0.8174 - val_acc: 0.7853
+Epoch 13/20
+90s - loss: 0.3140 - acc: 0.9023 - val_loss: 0.7620 - val_acc: 0.7692
+Epoch 14/20
+87s - loss: 0.2820 - acc: 0.9114 - val_loss: 0.6290 - val_acc: 0.8055
+Epoch 15/20
+92s - loss: 0.2806 - acc: 0.9131 - val_loss: 1.0119 - val_acc: 0.7452
+Epoch 16/20
+87s - loss: 0.2710 - acc: 0.9176 - val_loss: 1.0829 - val_acc: 0.7137
+Epoch 17/20
+88s - loss: 0.2300 - acc: 0.9298 - val_loss: 1.1266 - val_acc: 0.7408
+Epoch 18/20
+91s - loss: 0.2412 - acc: 0.9294 - val_loss: 0.7788 - val_acc: 0.7950
+Epoch 19/20
+91s - loss: 0.2097 - acc: 0.9379 - val_loss: 0.7294 - val_acc: 0.8065
+Epoch 20/20
+91s - loss: 0.2222 - acc: 0.9379 - val_loss: 0.9445 - val_acc: 0.7760
