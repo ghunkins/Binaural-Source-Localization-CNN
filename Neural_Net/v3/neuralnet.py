@@ -37,7 +37,7 @@ params = {'batch_size': 32,
 		  'Y_encoder': encoder,
           'shuffle': True}
 
-LIMIT = 500000
+LIMIT = 100000
 RANDOM_STATE = 3
 
 # Datasets
@@ -75,4 +75,4 @@ model.fit_generator(generator = training_generator,
                     validation_steps = len(Test_IDs)//params['batch_size'],
                     verbose=2)
 
-model.save("./model_500000.h5py")
+model.save("./model_100000.h5py")
