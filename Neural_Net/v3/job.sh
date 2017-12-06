@@ -9,7 +9,7 @@
 #SBATCH -e error.txt
 #SBATCH --mail-type=begin
 #SBATCH --mail-user=ghunkins@u.rochester.edu
-#SBATCH --gres=gpu:1
+#SBATCH --gres=gpu:4
 
 source activate keras
 python neuralnet.py

@@ -37,7 +37,7 @@ params = {'batch_size': 32,
 		  'Y_encoder': encoder,
           'shuffle': True}
 
-LIMIT = 5000
+LIMIT = 20000
 RANDOM_STATE = 3
 
 # Datasets
@@ -70,7 +70,7 @@ model.summary()
 
 model.fit_generator(generator = training_generator,
 					steps_per_epoch = len(Train_IDs)//params['batch_size'],
-                    nb_epoch = 10, 
+                    nb_epoch = 20, 
                     validation_data = validation_generator,
                     validation_steps = len(Test_IDs)//params['batch_size'],
                     verbose=2)
