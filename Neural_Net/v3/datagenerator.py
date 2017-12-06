@@ -31,7 +31,10 @@ class DataGenerator(object):
               list_IDs_temp = [list_IDs[k] for k in indexes[i*self.batch_size:(i+1)*self.batch_size]]
 
               # Generate data
-              X, Y = self.__data_generation(list_IDs_temp)
+              try:
+              	X, Y = self.__data_generation(list_IDs_temp)
+              except IOError:
+              	continue
 
               yield X, Y
 
