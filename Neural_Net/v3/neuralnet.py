@@ -70,9 +70,9 @@ model.summary()
 
 model.fit_generator(generator = training_generator,
 					steps_per_epoch = len(Train_IDs)//params['batch_size'],
-                    nb_epoch = 20, 
+                    nb_epoch = 12, 
                     validation_data = validation_generator,
                     validation_steps = len(Test_IDs)//params['batch_size'],
                     verbose=2)
 
-model.save("./model_200000_job.h5py")
+model.save("./model_200000_job_epoch12.h5py")
