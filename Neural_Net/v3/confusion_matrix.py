@@ -46,7 +46,7 @@ validation_generator = DataGenerator(**params).generate(Test_IDs)
 y_test = []
 for ID in Test_IDs:
 	split = ID[:-4].split('_')
-	y_test.append(encoder.transform([split[2] + '_' + split[3]])[0])
+	y_test.append([split[2] + '_' + split[3]])
 
 
 model = load_model('results/model_200000_job_1689840.h5py')
