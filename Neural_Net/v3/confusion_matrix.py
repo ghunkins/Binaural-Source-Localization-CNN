@@ -59,6 +59,7 @@ try:
 except:
 	pass
 
+y_pred = y_pred.tolist()
 y_pred = [x.index(1) for x in y_pred]
 y_pred_transform = encoder.inverse_transform(y_pred)
 
