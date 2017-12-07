@@ -51,6 +51,14 @@ for ID in Test_IDs:
 model = load_model('results/model_200000_job_1689840.h5py')
 
 y_pred = model.predict_generator(generator=validation_generator, steps=len(Test_IDs)//32, verbose=1)
+try:
+	print "===================================="
+	print y_pred
+	print y_pred.shape
+	print "===================================="
+except:
+	pass
+	
 y_pred_transform = encoder.inverse_transform(y_pred)
 
 def plot_confusion_matrix(cm, classes,
