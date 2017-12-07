@@ -109,6 +109,7 @@ print "length:", len(y_test)
 print "===================================="
 # Compute confusion matrix
 cnf_matrix = confusion_matrix(y_test, y_pred_transform)
+np.save('cnf_matrix.npy', cnf_matrix)
 np.set_printoptions(precision=2)
 
 # Plot non-normalized confusion matrix
