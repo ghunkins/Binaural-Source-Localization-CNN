@@ -14,6 +14,7 @@ from sklearn.metrics import confusion_matrix
 import matplotlib.pyplot as plt
 import numpy as np
 import itertools
+import operator
 import os
 
 if os.path.abspath('~') == '/Users/ghunk/~':
@@ -60,7 +61,7 @@ except:
 	pass
 
 y_pred = y_pred.tolist()
-y_pred = [x.index(1) for x in y_pred]
+y_pred = [max(enumerate(x), key=operator.itemgetter(1))[0] for x in y_pred]
 y_pred_transform = encoder.inverse_transform(y_pred)
 
 def plot_confusion_matrix(cm, classes,
