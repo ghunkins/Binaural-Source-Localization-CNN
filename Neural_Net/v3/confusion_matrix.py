@@ -98,6 +98,15 @@ def plot_confusion_matrix(cm, classes,
     plt.ylabel('True label')
     plt.xlabel('Predicted label')
 
+print "===================================="
+print y_test
+print "Type:", type(y_test[0])
+print "length:", len(y_test)
+print "===================================="
+print y_pred_transform
+print "Type:", type(y_pred_transform[0])
+print "length:", len(y_test)
+print "===================================="
 # Compute confusion matrix
 cnf_matrix = confusion_matrix(y_test, y_pred_transform)
 np.set_printoptions(precision=2)
