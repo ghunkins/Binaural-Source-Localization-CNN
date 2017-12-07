@@ -16,7 +16,8 @@ import numpy as np
 import itertools
 import os
 
-if os.path.abspath('~') == '/Users/ghunk/~':
+#if os.path.abspath('~') == '/Users/ghunk/~':
+if True:
 	data_root = "/Users/ghunk/Desktop/GRADUATE/CSC_464/Final_Project/Dataset/stft_binaural_0.5s/"
 else:
 	data_root = "/scratch/ghunkins/stft_binaural_0.5s/"
@@ -50,13 +51,13 @@ for ID in Test_IDs:
 
 model = load_model('results/model_200000_job_1689840.h5py')
 
-y_pred = model.predict_generator()
+y_pred = model.predict_generator(generator=validation_generator, steps=len(Test_IDs)//32, verbose=1)
 y_pred_transform = encoder.inverse_transform(y_pred)
 
 def plot_confusion_matrix(cm, classes,
                           normalize=False,
-                          title='Confusion matrix',
-                          cmap=plt.cm.Blues):
+                          title='',
+                          cmap="gpuplot2"):
     """
     This function prints and plots the confusion matrix.
     Normalization can be applied by setting `normalize=True`.
@@ -101,4 +102,5 @@ plt.figure()
 plot_confusion_matrix(cnf_matrix, classes=classes, normalize=True,
                       title='Normalized confusion matrix')
 
+plt.savefig("confusion_matrix.png")
 plt.show()
