@@ -16,8 +16,7 @@ import numpy as np
 import itertools
 import os
 
-#if os.path.abspath('~') == '/Users/ghunk/~':
-if True:
+if os.path.abspath('~') == '/Users/ghunk/~':
 	data_root = "/Users/ghunk/Desktop/GRADUATE/CSC_464/Final_Project/Dataset/stft_binaural_0.5s/"
 else:
 	data_root = "/scratch/ghunkins/stft_binaural_0.5s/"
