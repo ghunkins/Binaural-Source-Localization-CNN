@@ -1,0 +1,30 @@
+2017-12-05 22:09:45.397105: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-05 22:09:45.397234: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-05 22:09:45.398083: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-12-05 22:09:48.733357: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: Tesla K20Xm
+major: 3 minor: 5 memoryClockRate (GHz) 0.732
+pciBusID 0000:20:00.0
+Total memory: 5.57GiB
+Free memory: 5.49GiB
+2017-12-05 22:09:48.963136: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x555da675f830 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-12-05 22:09:48.963885: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 1 with properties: 
+name: Tesla K20Xm
+major: 3 minor: 5 memoryClockRate (GHz) 0.732
+pciBusID 0000:8b:00.0
+Total memory: 5.57GiB
+Free memory: 5.49GiB
+2017-12-05 22:09:48.963976: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 0 and 1
+2017-12-05 22:09:48.964015: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 1 and 0
+2017-12-05 22:09:48.964059: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 1 
+2017-12-05 22:09:48.964108: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y N 
+2017-12-05 22:09:48.964130: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 1:   N Y 
+2017-12-05 22:09:48.964177: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K20Xm, pci bus id: 0000:20:00.0)
+2017-12-05 22:09:48.964201: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:1) -> (device: 1, name: Tesla K20Xm, pci bus id: 0000:8b:00.0)
+Using TensorFlow backend.
+neuralnet.py:76: UserWarning: The semantics of the Keras 2 argument `steps_per_epoch` is not the same as the Keras 1 argument `samples_per_epoch`. `steps_per_epoch` is the number of batches to draw from the generator at each epoch. Basically steps_per_epoch = samples_per_epoch/batch_size. Similarly `nb_val_samples`->`validation_steps` and `val_samples`->`steps` arguments have changed. Update your method calls accordingly.
+  verbose=2)
+neuralnet.py:76: UserWarning: Update your `fit_generator` call to the Keras 2 API: `fit_generator(verbose=2, generator=<generator..., validation_data=<generator..., steps_per_epoch=2500, epochs=20, validation_steps=625)`
+  verbose=2)
+2017-12-05 22:10:29.053190: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K20Xm, pci bus id: 0000:20:00.0)
+2017-12-05 22:10:29.053272: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:1) -> (device: 1, name: Tesla K20Xm, pci bus id: 0000:8b:00.0)

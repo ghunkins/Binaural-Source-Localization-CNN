@@ -1,0 +1,21 @@
+Epoch 1/10
+2017-12-05 20:18:27.876008: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K20Xm, pci bus id: 0000:20:00.0)
+285s - loss: 4.7734 - acc: 0.0217 - val_loss: 4.2608 - val_acc: 0.0323
+Epoch 2/10
+35s - loss: 3.8446 - acc: 0.0633 - val_loss: 3.5479 - val_acc: 0.0776
+Epoch 3/10
+33s - loss: 3.2339 - acc: 0.1195 - val_loss: 3.0606 - val_acc: 0.1573
+Epoch 4/10
+32s - loss: 2.7302 - acc: 0.1840 - val_loss: 2.5798 - val_acc: 0.2177
+Epoch 5/10
+33s - loss: 2.3558 - acc: 0.2430 - val_loss: 2.4307 - val_acc: 0.2298
+Epoch 6/10
+33s - loss: 2.0610 - acc: 0.3100 - val_loss: 2.2135 - val_acc: 0.2913
+Epoch 7/10
+32s - loss: 1.7700 - acc: 0.3950 - val_loss: 2.0803 - val_acc: 0.3579
+Epoch 8/10
+32s - loss: 1.5014 - acc: 0.4730 - val_loss: 2.2795 - val_acc: 0.2742
+Epoch 9/10
+35s - loss: 1.3641 - acc: 0.5282 - val_loss: 2.1131 - val_acc: 0.3558
+Epoch 10/10
+^[[B33s - loss: 1.1918 - acc: 0.5740 - val_loss: 2.0683 - val_acc: 0.3921
