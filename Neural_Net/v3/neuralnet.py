@@ -12,6 +12,7 @@ session = tf.Session(config=config)
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten
 from keras.layers import Conv2D, Conv1D, GlobalAveragePooling2D
+from keras.callbacks import ModelCheckpoint
 from datagenerator import DataGenerator
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
@@ -66,13 +67,20 @@ model.compile(loss='categorical_crossentropy',
 
 model.summary()
 
+# set callback: https://machinelearningmastery.com/check-point-deep-learning-models-keras/
+
+filepath="weights-improvement-{epoch:02d}-{val_acc:.2f}.hdf5"
+checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
+callbacks_list = [checkpoint]
+
 # Train model on dataset
 
 model.fit_generator(generator = training_generator,
 					steps_per_epoch = len(Train_IDs)//params['batch_size'],
-                    nb_epoch = 12, 
+                    nb_epoch = 50, 
                     validation_data = validation_generator,
                     validation_steps = len(Test_IDs)//params['batch_size'],
-                    verbose=2)
+                    verbose=2,
+                    callbacks=callbacks_list)
 
 model.save("./model_200000_job_epoch12.h5py")
