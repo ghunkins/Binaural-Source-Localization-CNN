@@ -64,9 +64,10 @@ class DataGenerator(object):
           # transform to log
           ref_X = standardized_X[i]
           ref_X[ref_X == 0] = np.finfo(dtype='float32').tiny
-          log_X = np.log10(standardized_X[i])
+          ref_X[:201][:] = np.log10(ref_X[:201][:])
+          ref_X[402:603][:] = np.log10(ref_X[402:603][:])
           # Store volume
-          X[i, :, :, 0] = log_X
+          X[i, :, :, 0] = ref_X
           #X[i, :, :, 0] = standardized_X[i]
           # Store class
           split = ID[:-4].split('_')
