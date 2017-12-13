@@ -21,8 +21,7 @@ matplotlib.rc('font', **font)
 
 data_root = "/Users/ghunk/Desktop/GRADUATE/CSC_464/Final_Project/Dataset/stft_binaural_0.5s/"
 
-def getstats():
-	full_dir = os.listdir(data_root)
+def getstats(full_dir):
 	split = [x.split('_') for x in full_dir]
 	speakers = [x[1] for x in split]
 	classes = [x[2] + '_' + x[3] for x in split]
@@ -33,6 +32,7 @@ def getstats():
 		if s in speakers_dict:
 			speakers_dict[s] += 1
 		else:
+			#print s
 			speakers_dict[s] = 1
 	for c in classes:
 		if c in classes_dict:
@@ -40,11 +40,14 @@ def getstats():
 		else:
 			classes_dict[c] = 1
 
-	print speakers_dict
-	print classes_dict
+	#print speakers_dict
+	#print classes_dict
 
+	print 'Num files:', len(full_dir)
+	print 'Num speakers:', len(speakers_dict)
 	print 'Speakers Min:', min(speakers_dict.items(), key=lambda x: x[1]) 
 	print 'Speakers Max:', max(speakers_dict.items(), key=lambda x: x[1])
+	print 'Num classes', len(classes_dict)
 	print 'Classes Min:', min(classes_dict.items(), key=lambda x: x[1]) 
 	print 'Classes Max:', max(classes_dict.items(), key=lambda x: x[1])  
 
@@ -75,5 +78,18 @@ def getstats():
 	plt.ylabel('Number of Instances')
 	plt.show()
 
+def main():
+	full_dir = os.listdir(data_root)
+	full_dir.sort()
+	split_i = int(0.8 * len(full_dir))
+	train = full_dir[:split_i]
+	test = full_dir[split_i:]
+	print '==================== FULL ===================='
+	getstats(full_dir)
+	print '====================== TRAIN =================='
+	getstats(train)
+	print '====================== TEST =================='
+	getstats(test)
+	print '============================================='
 
-getstats()
+main()

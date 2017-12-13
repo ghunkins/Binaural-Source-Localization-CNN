@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH -p gpu
-#SBATCH -t 0-16:00:00
+#SBATCH -t 2-00:00:00
 #SBATCH --mem 10GB
 #SBATCH --job-name=binaural
 #SBATCH --output=binaural_full_%j.txt
