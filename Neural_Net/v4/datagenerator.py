@@ -61,9 +61,13 @@ class DataGenerator(object):
 
       # Generate data
       for i, ID in enumerate(list_IDs_temp):
+          # transform to log
+          ref_X = standardized_X[i]
+          ref_X[ref_X == 0] = np.finfo(dtype='float32').tiny
+          log_X = np.log10(standardized_X[i])
           # Store volume
-          X[i, :, :, 0] = standardized_X[i]
-          #X[i, :, :] = standardized_X[i]
+          X[i, :, :, 0] = log_X
+          #X[i, :, :, 0] = standardized_X[i]
           # Store class
           split = ID[:-4].split('_')
           Y[i] = self.Y_encoder.transform([split[2] + '_' + split[3]])[0]

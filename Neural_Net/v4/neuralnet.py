@@ -74,7 +74,7 @@ model.summary()
 
 # set callback: https://machinelearningmastery.com/check-point-deep-learning-models-keras/
 
-filepath="model-improvement-{epoch:02d}-{val_acc:.2f}.hdf5"
+filepath="log-model-improvement-{epoch:02d}-{val_acc:.2f}.hdf5"
 checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
 callbacks_list = [checkpoint]
 
