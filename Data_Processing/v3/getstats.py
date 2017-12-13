@@ -2,16 +2,38 @@
 This script generates statistics about the dataset
 in the data root.
 
+==================== FULL ====================
+Num files: 528905
+Num speakers: 2342
 Speakers Min: ('SX70', 31)
 Speakers Max: ('SI522', 636)
+Num classes 168
 Classes Min: ('30_150', 2803)
 Classes Max: ('45_240', 3444)
+====================== TRAIN ==================
+Num files: 423124
+Num speakers: 1825 - 1 (1824)
+Speakers Min: ('SI1953', 42)
+Speakers Max: ('SI522', 636)
+Num classes 168
+Classes Min: ('-30_195', 2214)
+Classes Max: ('-30_345', 2777)
+====================== TEST ==================
+Num files: 105781
+Num speakers: 518
+Speakers Min: ('SX70', 31)
+Speakers Max: ('SI950', 473)
+Num classes 168
+Classes Min: ('30_0', 481)
+Classes Max: ('-15_240', 761)
+=============================================
 """
 
 import os
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib
+import re
 
 font = {'family' : 'Times New Roman',
         'weight' : 'normal',
@@ -51,7 +73,7 @@ def getstats(full_dir):
 	print 'Classes Min:', min(classes_dict.items(), key=lambda x: x[1]) 
 	print 'Classes Max:', max(classes_dict.items(), key=lambda x: x[1])  
 
-	return
+	return speakers_dict.keys()
 	
 	pos = np.arange(len(speakers_dict.keys()))
 	width = 1.0     # gives histogram aspect to the bar diagram
@@ -78,6 +100,11 @@ def getstats(full_dir):
 	plt.ylabel('Number of Instances')
 	plt.show()
 
+SI932_re = re.compile('\d+_SI932*')
+
+def nooverlap(x):
+	return not SI932_re.match(x)
+
 def main():
 	full_dir = os.listdir(data_root)
 	full_dir.sort()
@@ -91,5 +118,12 @@ def main():
 	print '====================== TEST =================='
 	getstats(test)
 	print '============================================='
+	print 'Overlap:', set(train).intersection(test)
+	test = filter(nooverlap, test)
+	print 'Overlap:', set(train).intersection(test)
+	print 'Len Test', len(test)
+	print 'Len Train', len(train)
+	np.save('train_speakers_list.npy', train)
+	np.save('test_speakers_list.npy', test)
 
 main()
