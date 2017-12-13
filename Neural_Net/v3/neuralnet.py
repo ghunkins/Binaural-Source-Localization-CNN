@@ -37,7 +37,7 @@ params = {'batch_size': 32,
 		  'Y_encoder': encoder,
           'shuffle': True}
 
-LIMIT = 200000
+LIMIT = 2000000
 RANDOM_STATE = 3
 
 # Datasets

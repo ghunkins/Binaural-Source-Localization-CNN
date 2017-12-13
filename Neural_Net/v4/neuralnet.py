@@ -60,14 +60,16 @@ model.add(GlobalAveragePooling2D(data_format='channels_last'))
 model.add(Dense(168, activation='relu'))
 model.add(Dense(168, activation='softmax'))
 
+# compile the model for categorical cross entropy using 
+# Adam optimizer
 model.compile(loss='categorical_crossentropy',
               optimizer='adam',
               metrics=['accuracy'])
 
+# print out the model summary
 model.summary()
 
 # Train model on dataset
-
 model.fit_generator(generator = training_generator,
 					steps_per_epoch = len(Train_IDs)//params['batch_size'],
                     nb_epoch = 12, 
