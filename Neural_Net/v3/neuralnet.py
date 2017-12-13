@@ -76,7 +76,7 @@ callbacks_list = [checkpoint]
 # Train model on dataset
 
 model.fit_generator(generator = training_generator,
-					steps_per_epoch = len(Train_IDs)//params['batch_size'],
+					          steps_per_epoch = len(Train_IDs)//params['batch_size'],
                     nb_epoch = 50, 
                     validation_data = validation_generator,
                     validation_steps = len(Test_IDs)//params['batch_size'],
