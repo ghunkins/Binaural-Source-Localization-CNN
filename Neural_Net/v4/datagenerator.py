@@ -63,7 +63,7 @@ class DataGenerator(object):
       for i, ID in enumerate(list_IDs_temp):
           # transform to log
           ref_X = standardized_X[i]
-          ref_X[ref_X == 0] = np.finfo(dtype='float32').tiny
+          ref_X[ref_X == 0] = np.finfo(dtype='float16').tiny
           ref_X[:201][:] = np.log10(ref_X[:201][:])
           ref_X[402:603][:] = np.log10(ref_X[402:603][:])
           # Store volume
