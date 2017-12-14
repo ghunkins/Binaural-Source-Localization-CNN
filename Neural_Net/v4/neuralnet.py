@@ -22,11 +22,6 @@ import os
 
 # Parameters
 
-if os.path.abspath('~') == '/Users/ghunk/~':
-	data_root = "/Users/ghunk/Desktop/GRADUATE/CSC_464/Final_Project/Dataset/stft_binaural_0.5s/"
-else:
-	data_root = "/scratch/ghunkins/stft_binaural_0.5s/"
-
 elevations = [-45, -30, -15, 0, 15, 30, 45]
 azimuths = [15*x for x in range(24)]
 el_az = list(itertools.product(elevations, azimuths))
@@ -34,9 +29,15 @@ classes = [str(x) + '_' + str(y) for x, y in el_az]
 encoder = LabelEncoder()
 encoder.fit(classes)
 
-params = {'batch_size': 32,
-		      'Y_encoder': encoder,
-          'shuffle': True}
+params_train = {'batch_size': 32,
+		            'Y_encoder': encoder,
+                'shuffle': True, 
+                'dataroot': '/scratch/ghunkins/STFT_TRAIN_NOISE/'}
+
+params_test = {'batch_size': 32,
+                'Y_encoder': encoder,
+                'shuffle': True, 
+                'dataroot': '/scratch/ghunkins/STFT_TEST_NOISE/'}
 
 LIMIT = 2000000
 RANDOM_STATE = 3
@@ -45,8 +46,12 @@ RANDOM_STATE = 3
 #IDs = os.listdir(data_root)[:LIMIT]
 
 #Train_IDs, Test_IDs, _, _, = train_test_split(IDs, np.arange(len(IDs)), test_size=0.2, random_state=RANDOM_STATE)
-Train_IDs = np.load('./train_test/train_speakers_list.npy')
-Test_IDs = np.load('./train_test/test_speakers_list.npy')
+re_filter = 
+
+Train_IDs = os.listdir(params_train['dataroot'])
+Test_IDs = os.listdir(params_test['dataroot'])
+#Train_IDs = np.load('./train_test/train_speakers_list.npy')
+#Test_IDs = np.load('./train_test/test_speakers_list.npy')
 
 # Generators
 training_generator = DataGenerator(**params).generate(Train_IDs)

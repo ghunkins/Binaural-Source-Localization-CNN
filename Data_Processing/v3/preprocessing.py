@@ -73,8 +73,8 @@ def preprocess(filepath, graph=False):
 
 	return full_spectrograms
 
-recording_root = "/Users/ghunk/Desktop/GRADUATE/CSC_464/Final_Project/Dataset/binaural/"
-save_root = "/Users/ghunk/Desktop/GRADUATE/CSC_464/Final_Project/Dataset/MAG_STFT/"
+recording_root = "/Users/ghunk/Desktop/GRADUATE/CSC_464/Final_Project/Dataset/BINAURAL_TEST_NOISE/"
+save_root = "/Users/ghunk/Desktop/GRADUATE/CSC_464/Final_Project/Dataset/STFT_TEST_NOISE/"
 
 def main():
 	start_time = time.time()

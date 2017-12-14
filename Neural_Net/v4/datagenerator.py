@@ -4,18 +4,15 @@ Modified from: https://stanford.edu/~shervine/blog/keras-how-to-generate-data-on
 import numpy as np
 import os
 
-if os.path.abspath('~') == '/Users/ghunk/~':
-  data_root = "/Users/ghunk/Desktop/GRADUATE/CSC_464/Final_Project/Dataset/stft_binaural_0.5s/"
-else:
-  data_root = "/scratch/ghunkins/stft_binaural_0.5s/"
-
 class DataGenerator(object):
   '''Generates data for Keras'''
-  def __init__(self, batch_size=32, Y_encoder=None, shuffle=True):
+  def __init__(self, batch_size=32, Y_encoder=None, shuffle=True, dataroot=None):
       'Initialization'
       self.batch_size = batch_size
       self.shuffle = shuffle
       self.Y_encoder = Y_encoder
+      self.dataroot = dataroot
+
 
   def generate(self, list_IDs):
       '''Generates batches of samples'''
@@ -51,7 +48,7 @@ class DataGenerator(object):
       '''Generates data of batch_size samples''' # X : (n_samples, v_size, v_size, v_size, n_channels)
       # Initialization
 
-      loaded_X = [np.load(data_root + ID) for ID in list_IDs_temp]
+      loaded_X = [np.load(self.dataroot + ID) for ID in list_IDs_temp]
       x_dim, y_dim = min([x.shape for x in loaded_X]) 
       standardized_X = [x[...,:(y_dim-1)] for x in loaded_X]
 

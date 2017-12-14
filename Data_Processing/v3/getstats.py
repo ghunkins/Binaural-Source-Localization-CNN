@@ -105,6 +105,19 @@ SI932_re = re.compile('\d+_SI932*')
 def nooverlap(x):
 	return not SI932_re.match(x)
 
+def save_test_train_speakers():
+	full_dir = os.listdir(data_root)
+	full_dir.sort()
+	split_i = int(0.8 * len(full_dir))
+	train = full_dir[:split_i]
+	test = full_dir[split_i:]
+	train_speakers = getstats(train)
+	test_speakers = getstats(test)
+	test_speakers.remove('SI932')
+	np.save('train_speakers.npy', train_speakers)
+	np.save('test_speakers.npy', test_speakers)
+	
+
 def main():
 	full_dir = os.listdir(data_root)
 	full_dir.sort()
@@ -126,4 +139,5 @@ def main():
 	np.save('train_speakers_list.npy', train)
 	np.save('test_speakers_list.npy', test)
 
-main()
+#main()
+save_test_train_speakers()
