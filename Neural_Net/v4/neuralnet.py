@@ -50,14 +50,13 @@ RANDOM_STATE = 3
 #Train_IDs, Test_IDs, _, _, = train_test_split(IDs, np.arange(len(IDs)), test_size=0.2, random_state=RANDOM_STATE)
 db = '20db'
 
-re_filter = re.compile('*20db_\d+.npy')
-
 Train_IDs = os.listdir(params_train['dataroot'])
-Train_IDs = filter(re_filter.match, Train_IDs)[:TRAIN_LIMIT]
+Train_IDs = list(filter(lambda z: (db in z), Train_IDs))[:TRAIN_LIMIT]
 Test_IDs = os.listdir(params_test['dataroot'])
-Test_IDs = filter(re_filter.match, Test_IDs)[:TEST_LIMIT]
+Test_IDs = list(filter(lambda z: (db in z), Test_IDs))[:TEST_LIMIT]
 #Train_IDs = np.load('./train_test/train_speakers_list.npy')
 #Test_IDs = np.load('./train_test/test_speakers_list.npy')
+
 
 # Generators
 training_generator = DataGenerator(**params_train).generate(Train_IDs)
