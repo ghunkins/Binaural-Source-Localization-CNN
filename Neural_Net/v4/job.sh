@@ -1,10 +1,10 @@
 #!/bin/bash
 #SBATCH -p gpu
-#SBATCH -t 2-00:00:00
+#SBATCH -t 0-04:00:00
 #SBATCH --mem=10GB
-#SBATCH --job-name=log_binaural
-#SBATCH --output=log_binaural_traintest_sep_%j.txt
-#SBATCH -e log_error_traintest_sep_%j.txt
+#SBATCH --job-name=0db
+#SBATCH --output=0db_%j.txt
+#SBATCH -e 0db_%j.txt
 #SBATCH --gres=gpu:2
 
 source activate keras

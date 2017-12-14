@@ -2,7 +2,6 @@
 Modified from: https://stanford.edu/~shervine/blog/keras-how-to-generate-data-on-the-fly.html
 """
 import numpy as np
-import os
 
 class DataGenerator(object):
   '''Generates data for Keras'''

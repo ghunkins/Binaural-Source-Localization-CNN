@@ -19,6 +19,7 @@ from sklearn.preprocessing import LabelEncoder
 import numpy as np
 import itertools
 import os
+import re
 
 # Parameters
 
@@ -39,23 +40,27 @@ params_test = {'batch_size': 32,
                 'shuffle': True, 
                 'dataroot': '/scratch/ghunkins/STFT_TEST_NOISE/'}
 
-LIMIT = 2000000
+TRAIN_LIMIT = 62000
+TEST_LIMIT = 12400
 RANDOM_STATE = 3
 
 # Datasets
 #IDs = os.listdir(data_root)[:LIMIT]
 
 #Train_IDs, Test_IDs, _, _, = train_test_split(IDs, np.arange(len(IDs)), test_size=0.2, random_state=RANDOM_STATE)
-re_filter = 
+db = '0db'
+re_filter = re.compile('*'+db+'_\d+.npy')
 
 Train_IDs = os.listdir(params_train['dataroot'])
+Train_IDs = filter(re_filter.match, Train_IDs)[:TRAIN_LIMIT]
 Test_IDs = os.listdir(params_test['dataroot'])
+Test_IDs = filter(re_filter.match, Test_IDs)[:TEST_LIMIT]
 #Train_IDs = np.load('./train_test/train_speakers_list.npy')
 #Test_IDs = np.load('./train_test/test_speakers_list.npy')
 
 # Generators
-training_generator = DataGenerator(**params).generate(Train_IDs)
-validation_generator = DataGenerator(**params).generate(Test_IDs)
+training_generator = DataGenerator(**params_train).generate(Train_IDs)
+validation_generator = DataGenerator(**params_test).generate(Test_IDs)
 
 # Design model
 model = Sequential()
@@ -79,15 +84,15 @@ model.summary()
 
 # set callback: https://machinelearningmastery.com/check-point-deep-learning-models-keras/
 
-filepath="log-model-improvement-{epoch:02d}-{val_acc:.2f}.hdf5"
+filepath= db + "-log-model-improvement-{epoch:02d}-{val_acc:.2f}.hdf5"
 checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
 callbacks_list = [checkpoint]
 
 # Train model on dataset
 model.fit_generator(generator = training_generator,
-					steps_per_epoch = len(Train_IDs)//params['batch_size'],
+					steps_per_epoch = len(Train_IDs)//params_train['batch_size'],
                     nb_epoch = 20, 
                     validation_data = validation_generator,
-                    validation_steps = len(Test_IDs)//params['batch_size'],
+                    validation_steps = len(Test_IDs)//params_train['batch_size'],
                     verbose=2,
                     callbacks=callbacks_list)
