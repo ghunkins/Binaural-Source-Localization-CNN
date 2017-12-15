@@ -43,7 +43,7 @@ for ID in Test_IDs:
 	y_test.append([split[2] + '_' + split[3]])
 
 
-model = load_model('results/log-model-improvement-05-1.00.hdf5')
+model = load_model('../results/log-model-improvement-05-1.00.hdf5')
 
 y_pred = model.predict_generator(generator=validation_generator, steps=len(Test_IDs)//32, verbose=1)
 try:
