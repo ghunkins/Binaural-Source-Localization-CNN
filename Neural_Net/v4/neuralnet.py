@@ -31,7 +31,7 @@ encoder = LabelEncoder()
 encoder.fit(classes)
 
 params_train = {'batch_size': 32,
-		            'Y_encoder': encoder,
+		        'Y_encoder': encoder,
                 'shuffle': True, 
                 'dataroot': '/scratch/ghunkins/STFT_TRAIN_NOISE/'}
 
@@ -48,7 +48,7 @@ RANDOM_STATE = 3
 #IDs = os.listdir(data_root)[:LIMIT]
 
 #Train_IDs, Test_IDs, _, _, = train_test_split(IDs, np.arange(len(IDs)), test_size=0.2, random_state=RANDOM_STATE)
-db = '0db'
+db = '10db'
 
 Train_IDs = os.listdir(params_train['dataroot'])
 Train_IDs = list(filter(lambda z: (db in z), Train_IDs))[:TRAIN_LIMIT]
