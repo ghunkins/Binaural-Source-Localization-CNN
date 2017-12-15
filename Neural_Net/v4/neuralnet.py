@@ -40,15 +40,15 @@ params_test = {'batch_size': 32,
                 'shuffle': True, 
                 'dataroot': '/scratch/ghunkins/STFT_TEST_NOISE/'}
 
-TRAIN_LIMIT = 62000
-TEST_LIMIT = 12400
+TRAIN_LIMIT = 8000000
+TEST_LIMIT = 8000000
 RANDOM_STATE = 3
 
 # Datasets
 #IDs = os.listdir(data_root)[:LIMIT]
 
 #Train_IDs, Test_IDs, _, _, = train_test_split(IDs, np.arange(len(IDs)), test_size=0.2, random_state=RANDOM_STATE)
-db = '10db'
+db = '0db'
 
 Train_IDs = os.listdir(params_train['dataroot'])
 Train_IDs = list(filter(lambda z: (db in z), Train_IDs))[:TRAIN_LIMIT]
