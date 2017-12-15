@@ -20,6 +20,7 @@ import numpy as np
 import itertools
 import os
 import re
+import sys
 
 # Parameters
 
@@ -54,6 +55,9 @@ Train_IDs = os.listdir(params_train['dataroot'])
 Train_IDs = list(filter(lambda z: (db in z), Train_IDs))[:TRAIN_LIMIT]
 Test_IDs = os.listdir(params_test['dataroot'])
 Test_IDs = list(filter(lambda z: (db in z), Test_IDs))[:TEST_LIMIT]
+np.save('Test_IDs.npy', Test_IDs)
+np.save('Train_IDs.npy', Train_IDs)
+sys.exit()
 #Train_IDs = np.load('./train_test/train_speakers_list.npy')
 #Test_IDs = np.load('./train_test/test_speakers_list.npy')
 
