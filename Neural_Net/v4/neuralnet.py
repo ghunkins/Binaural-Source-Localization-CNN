@@ -55,9 +55,9 @@ Train_IDs = os.listdir(params_train['dataroot'])
 Train_IDs = list(filter(lambda z: (db in z), Train_IDs))[:TRAIN_LIMIT]
 Test_IDs = os.listdir(params_test['dataroot'])
 Test_IDs = list(filter(lambda z: (db in z), Test_IDs))[:TEST_LIMIT]
-np.save('Test_IDs.npy', Test_IDs)
-np.save('Train_IDs.npy', Train_IDs)
-sys.exit()
+#np.save('Test_IDs.npy', Test_IDs)
+#np.save('Train_IDs.npy', Train_IDs)
+#sys.exit()
 #Train_IDs = np.load('./train_test/train_speakers_list.npy')
 #Test_IDs = np.load('./train_test/test_speakers_list.npy')
 
@@ -88,8 +88,8 @@ model.summary()
 
 # set callback: https://machinelearningmastery.com/check-point-deep-learning-models-keras/
 
-filepath= db + "-log-model-improvement-{epoch:02d}-{val_acc:.2f}.hdf5"
-checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
+filepath = db + "-log-model-improvement-{epoch:02d}-{val_acc:.2f}.hdf5"
+checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=False, mode='max')
 callbacks_list = [checkpoint]
 
 # Train model on dataset
