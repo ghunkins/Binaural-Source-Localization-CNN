@@ -8,19 +8,12 @@ Reference: http://scikit-learn.org/stable/auto_examples/model_selection/plot_con
 """
 from keras.models import load_model
 from datagenerator import DataGenerator
-from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import confusion_matrix
 import matplotlib.pyplot as plt
 import numpy as np
 import itertools
 import operator
-import os
-
-if os.path.abspath('~') == '/Users/ghunk/~':
-	data_root = "/Users/ghunk/Desktop/GRADUATE/CSC_464/Final_Project/Dataset/stft_binaural_0.5s/"
-else:
-	data_root = "/scratch/ghunkins/stft_binaural_0.5s/"
 
 elevations = [-45, -30, -15, 0, 15, 30, 45]
 azimuths = [15*x for x in range(24)]
@@ -29,19 +22,20 @@ classes = [str(x) + '_' + str(y) for x, y in el_az]
 encoder = LabelEncoder()
 encoder.fit(classes)
 
-params = {'batch_size': 32,
-	  'Y_encoder': encoder,
-      'shuffle': False}
+params_test = {'batch_size': 32,
+                'Y_encoder': encoder,
+                'shuffle': True, 
+                'dataroot': '/scratch/ghunkins/stft_binaural_0.5s/'}
 
-
-LIMIT = 200000
+TRAIN_LIMIT = 8000000
+TEST_LIMIT = 8000000
 RANDOM_STATE = 3
 
 # Datasets
-IDs = os.listdir(data_root)[:LIMIT]
 
-Train_IDs, Test_IDs, _, _, = train_test_split(IDs, np.arange(len(IDs)), test_size=0.2, random_state=RANDOM_STATE)
-validation_generator = DataGenerator(**params).generate(Test_IDs)
+Test_IDs = np.load('../train_test/test_speakers_list.npy')
+
+validation_generator = DataGenerator(**params_test).generate(Test_IDs)
 
 y_test = []
 for ID in Test_IDs:
@@ -49,7 +43,7 @@ for ID in Test_IDs:
 	y_test.append([split[2] + '_' + split[3]])
 
 
-model = load_model('results/model_200000_job_1689840.h5py')
+model = load_model('results/log-model-improvement-05-1.00.hdf5')
 
 y_pred = model.predict_generator(generator=validation_generator, steps=len(Test_IDs)//32, verbose=1)
 try:
