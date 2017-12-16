@@ -24,7 +24,7 @@ encoder.fit(classes)
 
 params_test = {'batch_size': 32,
                 'Y_encoder': encoder,
-                'shuffle': True, 
+                'shuffle': False, 
                 'dataroot': '/scratch/ghunkins/stft_binaural_0.5s/'}
 
 TRAIN_LIMIT = 8000000
@@ -46,6 +46,7 @@ for ID in Test_IDs:
 model = load_model('../results/log-model-improvement-05-1.00.hdf5')
 
 y_pred = model.predict_generator(generator=validation_generator, steps=len(Test_IDs)//32, verbose=1)
+
 try:
 	print "===================================="
 	print y_pred
@@ -95,12 +96,15 @@ def plot_confusion_matrix(cm, classes,
 print "===================================="
 print y_test
 print "Type:", type(y_test[0])
-print "length:", len(y_test)
+print "length:", len(y_pred_transform)
 print "===================================="
 print y_pred_transform
 print "Type:", type(y_pred_transform[0])
 print "length:", len(y_test)
 print "===================================="
+np.save('ytest.npy', y_test)
+np.save('ypred.npy', y_pred_transform)
+y_pred_transform = [x[0] for x in y_pred_transform]
 # Compute confusion matrix
 cnf_matrix = confusion_matrix(y_test, y_pred_transform)
 np.save('cnf_matrix.npy', cnf_matrix)
